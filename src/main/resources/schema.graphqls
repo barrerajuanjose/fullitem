@@ -6,4 +6,21 @@ type Item {
     id: ID
     title: String
     thumbnail: String
+    payment_options: PaymentOptions
+}
+
+type PaymentOptions {
+    paymentMethods: [PaymentMethod]
+}
+
+type PaymentMethod {
+    id: ID
+    name: String
+    issuer: Issuer
+}
+
+type Issuer {
+    id: ID
+    name: String
+    _default: Boolean
 }
