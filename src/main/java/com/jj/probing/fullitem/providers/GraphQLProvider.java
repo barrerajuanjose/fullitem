@@ -52,6 +52,8 @@ public class GraphQLProvider {
                         .dataFetcher("itemById", graphQLDataFetchers.getItemByIdDataFetcher()))
                 .type(newTypeWiring("Item")
                         .dataFetcher("payment_options", graphQLDataFetchers.getPaymentOptionsByItemIdDataFetcher()))
+                .type(newTypeWiring("Item")
+                        .dataFetcher("shipping_options", graphQLDataFetchers.getShippingOptionsByItemIdAndZipCodeDataFetcher()))
                 .build();
     }
 }

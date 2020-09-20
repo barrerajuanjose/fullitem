@@ -11,6 +11,7 @@ public class Item {
     private String title;
     private String thumbnail;
     private Optional<PaymentOptions> paymentOptions;
+    private Optional<ShippingOptions> shippingOptions;
 
     public String getId() {
         return id;
@@ -42,5 +43,13 @@ public class Item {
 
     public void setPaymentOptions(Optional<PaymentOptions> paymentOptions) {
         this.paymentOptions = paymentOptions;
+    }
+
+    public Optional<ShippingOptions> getShippingOptions() {
+        return shippingOptions;
+    }
+
+    public void setShippingOptions(Optional<ShippingOptions> shippingOptions) {
+        this.shippingOptions = shippingOptions;
     }
 }
