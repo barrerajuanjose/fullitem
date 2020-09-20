@@ -2,8 +2,9 @@ package com.jj.probing.fullitem.usecases;
 
 import com.jj.probing.fullitem.domains.PaymentOptions;
 import com.jj.probing.fullitem.usecases.port.PaymentOptionsRepository;
+import org.springframework.scheduling.annotation.Async;
 
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class FindPaymentOptionsByItemId {
     private PaymentOptionsRepository paymentOptionsRepository;
@@ -12,7 +13,8 @@ public class FindPaymentOptionsByItemId {
         this.paymentOptionsRepository = paymentOptionsRepository;
     }
 
-    public Optional<PaymentOptions> findByItemId(String itemId) {
+    @Async
+    public CompletableFuture<PaymentOptions> findByItemId(String itemId) {
         return paymentOptionsRepository.findByItemId(itemId);
     }
 }

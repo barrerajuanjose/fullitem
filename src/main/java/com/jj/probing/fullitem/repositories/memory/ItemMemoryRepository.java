@@ -3,15 +3,15 @@ package com.jj.probing.fullitem.repositories.memory;
 import com.jj.probing.fullitem.domains.Item;
 import com.jj.probing.fullitem.usecases.port.ItemRepository;
 
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class ItemMemoryRepository implements ItemRepository {
 
     @Override
-    public Optional<Item> findById(String id) {
+    public CompletableFuture<Item> findById(String id) {
         Item item = new Item();
         item.setId(id);
 
-        return Optional.of(item);
+        return CompletableFuture.completedFuture(item);
     }
 }

@@ -29,7 +29,7 @@ public class GraphQLDataFetchers {
         };
     }
 
-    public DataFetcher  getPaymentOptionsByItemIdDataFetcher() {
+    public DataFetcher getPaymentOptionsByItemIdDataFetcher() {
         return dataFetchingEnvironment -> {
             Item item = dataFetchingEnvironment.getSource();
             return findPaymentOptionsByItemId.findByItemId(item.getId());

@@ -4,6 +4,8 @@ import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import com.jj.probing.fullitem.fetchers.GraphQLDataFetchers;
 import graphql.GraphQL;
+import graphql.execution.AsyncExecutionStrategy;
+import graphql.execution.AsyncSerialExecutionStrategy;
 import graphql.schema.GraphQLSchema;
 import graphql.schema.idl.RuntimeWiring;
 import graphql.schema.idl.SchemaGenerator;
@@ -36,7 +38,9 @@ public class GraphQLProvider {
         URL url = Resources.getResource("schema.graphqls");
         String sdl = Resources.toString(url, Charsets.UTF_8);
         GraphQLSchema graphQLSchema = buildSchema(sdl);
-        this.graphQL = GraphQL.newGraphQL(graphQLSchema).build();
+        this.graphQL = GraphQL
+                .newGraphQL(graphQLSchema)
+                .build();
     }
 
     private GraphQLSchema buildSchema(String sdl) {

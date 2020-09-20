@@ -7,16 +7,16 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class ShippingOptionsRestRepository implements ShippingOptionsRepository {
     private final String URL = "https://api.mercadolibre.com/items/{itemId}/shipping_options?zip_code={zipCode}";
 
     @Override
-    public Optional<ShippingOptions> findByItemIdAndZipCode(String itemId, String zipCode) {
+    public CompletableFuture<ShippingOptions> findByItemIdAndZipCode(String itemId, String zipCode) {
         RestTemplate restTemplate = new RestTemplate();
         Map<String, String> params = ImmutableMap.of("itemId", itemId, "zipCode", Objects.requireNonNullElse(zipCode, "1430"));
 
-        return Optional.ofNullable(restTemplate.getForObject(URL, ShippingOptions.class, params));
+        return CompletableFuture.completedFuture(restTemplate.getForObject(URL, ShippingOptions.class, params));
     }
 }
