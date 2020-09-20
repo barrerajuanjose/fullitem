@@ -3,7 +3,7 @@ package com.jj.probing.fullitem.usecases;
 import com.jj.probing.fullitem.domains.Item;
 import com.jj.probing.fullitem.usecases.port.ItemRepository;
 
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class FindItem {
 
@@ -13,7 +13,7 @@ public class FindItem {
         this.itemRepository = itemRepository;
     }
 
-    public Optional<Item> find(String id) {
+    public CompletableFuture<Item> find(String id) {
         return itemRepository.findById(id);
     }
 }

@@ -6,16 +6,16 @@ import com.jj.probing.fullitem.usecases.port.PaymentOptionsRepository;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
-import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 public class PaymentOptionsRestRepository implements PaymentOptionsRepository {
     private final String URL = "https://api.mercadolibre.com/items/{itemId}/payment_options";
 
     @Override
-    public Optional<PaymentOptions> findByItemId(String itemId) {
+    public CompletableFuture<PaymentOptions> findByItemId(String itemId) {
         RestTemplate restTemplate = new RestTemplate();
         Map<String, String> params = ImmutableMap.of("itemId", itemId);
 
-        return Optional.ofNullable(restTemplate.getForObject(URL, PaymentOptions.class, params));
+        return CompletableFuture.completedFuture(restTemplate.getForObject(URL, PaymentOptions.class, params));
     }
 }
