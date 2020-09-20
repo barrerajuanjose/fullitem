@@ -1,9 +1,16 @@
 package com.jj.probing.fullitem.domains;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+
+import java.util.Optional;
+
+@JsonNaming(PropertyNamingStrategy.SnakeCaseStrategy.class)
 public class Item {
     private String id;
     private String title;
     private String thumbnail;
+    private Optional<PaymentOptions> paymentOptions;
 
     public String getId() {
         return id;
@@ -27,5 +34,13 @@ public class Item {
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public Optional<PaymentOptions> getPaymentOptions() {
+        return paymentOptions;
+    }
+
+    public void setPaymentOptions(Optional<PaymentOptions> paymentOptions) {
+        this.paymentOptions = paymentOptions;
     }
 }
